@@ -1,0 +1,20 @@
+body {
+  font-family: Arial;
+  text-align: center;
+  background-color: #f0f0f0;
+}
+
+#sudoku-board {
+  display: grid;
+  grid-template-columns: repeat(9, 40px);
+  grid-gap: 2px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+input {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+}
