@@ -9,5 +9,6 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true
     },
-    "editor.renderLineHighlight": "all"
+    "editor.renderLineHighlight": "all",
+    "editor.wordWrap": "on"
 }
