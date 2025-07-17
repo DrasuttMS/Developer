@@ -1,19 +1,27 @@
-import random
-ruleta = []
-resultado = []
-noHanSalido = []
+def noHanSalido(ruleta):
+    lista = []
+    for i in range(0,len(ruleta)):
+        if ruleta[i] == 0:
+            lista.append(ruleta[i])
+    return lista
 
-for i in range(0, 37):
-    ruleta.append(i)
-print("Ruleta: ", ruleta)
+def actualizarRuleta(ruleta, n):
+    n = 0
+    while (n < 0) or (n > 36):
+        n = int(input("Ingrese un numero entre 0 y 36: "))
+        if (n <0) or (n > 36):
+            print("-1")
+        else:
+            for i in range(0, len(ruleta)):
+                if ruleta[i] == n:
+                    num = ruleta[i] + 1
+    return num
 
-n = int(input("Cuantas veces ejecutaremos la ruleta?: "))
-for i in range(0,n):
-    numero = random.randint(0, 36)
-    if numero in noHanSalido:
-        noHanSalido.append(numero)
-    else:
-        resultado.append(numero)
+def obtenerPorcentaje(ruleta, n):
+    n = int(input("Ingrese un numero entre 0 y 36: "))
+    for i in range(0, len(ruleta)):
+        if ruleta[i] == n:
+            porcentaje = ruleta[i] / total * 100/100
+            total = sum(ruleta)
+    return porcentaje
 
-print("Resultados: ", resultado)
-print("No han salido: ", noHanSalido)   
