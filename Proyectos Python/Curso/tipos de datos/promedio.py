@@ -13,8 +13,8 @@ for i in range(int(t)):
 
 ef = float(input("Ingrese la nota del examen final: "))
 
-por_foro = sum(foro) / len(foro) * 0.15
-por_tarea = sum(tarea) / len(tarea) * 0.45
+por_foro = sum(foro) / len(foro) * (0.05 * len(foro))
+por_tarea = sum(tarea) / len(tarea) * (0.15 * len(tarea))
 por_ef = ef * 0.40
 promedio = por_foro + por_tarea + por_ef
-print(f"El promedio final es: {promedio:.2f}")
+print(f"El promedio final es: {promedio:.1f}")
