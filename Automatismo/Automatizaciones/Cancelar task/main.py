@@ -90,6 +90,8 @@ else:
                     time.sleep(0.3)
                     pyautogui.hotkey('ctrl', 'n')
 
+                GRUPO_INICIAL = task_grp  # Actualizar el grupo inicial
+                
             if not running:
                 print("--- PROCESO INTERRUMPIDO POR EL USUARIO ---")
             else:
