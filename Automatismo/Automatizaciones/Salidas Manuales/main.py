@@ -7,10 +7,10 @@ from pynput import keyboard  # Requiere: pip install pynput
 
 # --- CONFIGURACIÓN DE RUTAS ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-ARCHIVO_EXCEL = os.path.join(BASE_DIR, "cancel.xlsx")
+ARCHIVO_EXCEL = os.path.join(BASE_DIR, "SM.xlsx")
 
-COLUMNAS_OBJETIVO = ['TASK_GRP', 'TASK', 'BARRA']
-GRUPO_INICIAL = "D1"
+COLUMNAS_OBJETIVO = ['LPN', 'LPN_DESTINO', 'EAN', 'UNIDADES']
+ETI_INICIAL = '00000000000'
 
 # --- LÓGICA DE ESCAPE (TECLA ESC) ---
 running = True
@@ -45,54 +45,52 @@ else:
                 if not running:
                     break 
 
-                task_grp = str(fila['TASK_GRP']).strip()
-                task = str(fila['TASK']).strip()
-                barra = str(fila['BARRA']).strip()
+                LPN = str(fila['LPN']).strip()
+                LPN_DESTINO = str(fila['LPN_DESTINO']).strip()
+                EAN = str(fila['EAN']).strip()
+                UNIDADES = str(fila['UNIDADES']).strip()
 
-                print(f"Procesando fila {index + 1}/{len(df_final)}: {task_grp} / {task}")
+                print(f"Procesando fila {index + 1}/{len(df_final)}: {LPN} / {LPN_DESTINO} / {EAN} / {UNIDADES}")
 
                 # Lógica de automatización
-                if task_grp == GRUPO_INICIAL:
-                    pyautogui.hotkey('ctrl', 't')
-                    pyperclip.copy(task_grp)
+                if LPN_DESTINO == ETI_INICIAL:
+                    #Copiar y pegar EAN y Unidades
+                    pyperclip.copy(EAN)
                     pyautogui.click(button='right') 
                     time.sleep(0.4)
                     pyautogui.press('enter', presses=2, interval=0.2) 
-
-                    pyautogui.hotkey('ctrl', 'e')
-                    pyperclip.copy(task)
-                    pyautogui.click(button='right')
-                    time.sleep(0.4)
-                    pyautogui.press('enter', presses=1, interval=0.2)
-                    
-                    pyperclip.copy(barra)
-                    pyautogui.click(button='right')
-                    pyautogui.press('enter')
-                    time.sleep(0.3)
-                    pyautogui.hotkey('ctrl', 'n')
-                else:
-                    pyautogui.hotkey('ctrl', 'w')
-                    pyautogui.hotkey('ctrl', 't')
-                    pyperclip.copy(task_grp)
+                    pyperclip.copy(UNIDADES)
                     pyautogui.click(button='right') 
                     time.sleep(0.4)
-                    pyautogui.press('enter', presses=2, interval=0.2)
+                    pyautogui.press('enter', presses=1, interval=0.2)
 
+                else:
                     pyautogui.hotkey('ctrl', 'e')
-                    pyperclip.copy(task)
+                    pyautogui.hotkey('ctrl', 'n')
+                    time.sleep(0.5)
+                    pyperclip.copy(LPN_DESTINO)
                     pyautogui.click(button='right')
                     time.sleep(0.4)
                     pyautogui.press('enter', presses=1, interval=0.2)
-
-                    pyperclip.copy(barra)
+                    pyperclip.copy(EAN)
                     pyautogui.click(button='right')
-                    pyautogui.press('enter')
-                    time.sleep(0.3)
-                    pyautogui.hotkey('ctrl', 'n')
+                    time.sleep(0.4)
+                    pyautogui.press('enter', presses=2, interval=0.2)
+                    pyperclip.copy(UNIDADES)
+                    pyautogui.click(button='right')
+                    time.sleep(0.4)
+                    pyautogui.press('enter', presses=1, interval=0.2)
+                time.sleep(0.5)  # Espera entre filas
+
+                # --- CLAVE: ACTUALIZAR LA ETIQUETA PARA LA PRÓXIMA FILA ---
+                ETI_INICIAL = LPN_DESTINO
 
             if not running:
                 print("--- PROCESO INTERRUMPIDO POR EL USUARIO ---")
             else:
+                time.sleep(0.5)
+                pyautogui.hotkey('ctrl', 'e')
+                pyautogui.hotkey('ctrl', 'n')
                 print("--- PROCESO FINALIZADO EXITOSAMENTE ---")
         else:
             print(f"Error: Columnas no encontradas. Las columnas son: {list(df.columns)}")
