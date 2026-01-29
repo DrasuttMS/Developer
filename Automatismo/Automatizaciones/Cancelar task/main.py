@@ -53,11 +53,11 @@ else:
 
                 # Lógica de automatización
                 if task_grp == GRUPO_INICIAL:
-                    pyautogui.hotkey('ctrl', 't')
+                    """ pyautogui.hotkey('ctrl', 't')
                     pyperclip.copy(task_grp)
                     pyautogui.click(button='right') 
                     time.sleep(0.4)
-                    pyautogui.press('enter', presses=2, interval=0.2) 
+                    pyautogui.press('enter', presses=2, interval=0.2) """
 
                     pyautogui.hotkey('ctrl', 'e')
                     pyperclip.copy(task)
