@@ -62,7 +62,7 @@ else:
                     pyautogui.hotkey('ctrl', 'e')
                     pyperclip.copy(task)
                     pyautogui.click(button='right')
-                    time.sleep(0.4)
+                    time.sleep(0.5)
                     pyautogui.press('enter', presses=1, interval=0.2)
                     
                     pyperclip.copy(barra)
@@ -81,7 +81,7 @@ else:
                     pyautogui.hotkey('ctrl', 'e')
                     pyperclip.copy(task)
                     pyautogui.click(button='right')
-                    time.sleep(0.4)
+                    time.sleep(0.5)
                     pyautogui.press('enter', presses=1, interval=0.2)
 
                     pyperclip.copy(barra)
