@@ -37,8 +37,8 @@ else:
             df_final = df[COLUMNAS_OBJETIVO].dropna(how='all').reset_index(drop=True)
             
             print(f"Registros cargados: {len(df_final)}")
-            print("Selecciona la ventana de PuTTY. Iniciamos en 2 segundos...")
-            time.sleep(2)
+            print("Selecciona la ventana de PuTTY. Iniciamos en 1 segundos...")
+            time.sleep(1)
 
             for index, fila in df_final.iterrows():
                 # --- VERIFICACIÓN DE ESCAPE ---
@@ -53,42 +53,39 @@ else:
 
                 # Lógica de automatización
                 if task_grp == GRUPO_INICIAL:
-                    """ pyautogui.hotkey('ctrl', 't')
-                    pyperclip.copy(task_grp)
-                    pyautogui.click(button='right') 
-                    time.sleep(0.4)
-                    pyautogui.press('enter', presses=2, interval=0.2) """
 
                     pyautogui.hotkey('ctrl', 'e')
                     pyperclip.copy(task)
                     pyautogui.click(button='right')
-                    time.sleep(0.5)
+                    time.sleep(0.3)
                     pyautogui.press('enter', presses=1, interval=0.2)
                     
                     pyperclip.copy(barra)
                     pyautogui.click(button='right')
                     pyautogui.press('enter')
-                    time.sleep(0.3)
+                    time.sleep(0.6)
                     pyautogui.hotkey('ctrl', 'n')
+                    time.sleep(0.6)
                 else:
                     pyautogui.hotkey('ctrl', 'w')
                     pyautogui.hotkey('ctrl', 't')
                     pyperclip.copy(task_grp)
                     pyautogui.click(button='right') 
-                    time.sleep(0.4)
+                    time.sleep(0.6)
                     pyautogui.press('enter', presses=2, interval=0.2)
 
                     pyautogui.hotkey('ctrl', 'e')
                     pyperclip.copy(task)
                     pyautogui.click(button='right')
-                    time.sleep(0.5)
+                    time.sleep(0.3)
                     pyautogui.press('enter', presses=1, interval=0.2)
 
                     pyperclip.copy(barra)
                     pyautogui.click(button='right')
                     pyautogui.press('enter')
-                    time.sleep(0.3)
+                    time.sleep(0.6)
                     pyautogui.hotkey('ctrl', 'n')
+                    time.sleep(0.6)
 
                 GRUPO_INICIAL = task_grp  # Actualizar el grupo inicial
                 
