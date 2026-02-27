@@ -1,5 +1,3 @@
-import math
-
 n1 = input("Ingrese un Numero")
 n2 = input("Ingrese un Numero")
 
