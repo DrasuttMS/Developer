@@ -12,5 +12,6 @@
     "editor.renderLineHighlight": "all",
     "editor.wordWrap": "on",
     "python-envs.defaultEnvManager": "ms-python.python:system",
-    "python-envs.pythonProjects": []
+    "python-envs.pythonProjects": [],
+    "livePreview.defaultPreviewPath": "/Proyectos HTML/Game/html/index.html"
 }
